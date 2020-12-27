@@ -7,13 +7,14 @@ const getProducts = async () => {
 
 		setTimeout(function() {
 			resolve(data.products);
-		}, 1500);
+		}, 5500);
 	});
-	const myJson = await response.json();
-	console.log(myJson);
-	return myJson;
+	// const myJson = await response.json();
+	// console.log(myJson);
+	// return myJson;
+	return response;
 };
 
-export const ProductsService = {
+export default {
 	getProducts,
 };

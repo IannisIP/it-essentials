@@ -6,6 +6,7 @@ import { mutations } from "./mutations/mutations";
 import { getters } from "./getters/getters";
 
 Vue.use(Vuex);
+
 export default new Vuex.Store({
 	state,
 	mutations,

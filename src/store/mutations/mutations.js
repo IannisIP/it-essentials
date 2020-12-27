@@ -1,6 +1,6 @@
 export const mutations = {
-	SET_PRODUCTS(state, data) {
-		state.data = data;
+	SET_PRODUCTS(state, products) {
+		state.products = products;
 	},
 	LOADING(state, loading) {
 		state.loading = loading;

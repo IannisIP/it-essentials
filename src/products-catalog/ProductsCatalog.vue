@@ -1,30 +1,34 @@
 <template>
-	<div class="products-catalog" v-if="loading">
+	<div class="products-catalog" v-if="!loading && products.length">
 		<Product v-for="product in products" :product="product" :key="product.id" />
 	</div>
-	<div v-else>
-		Sorry, no products yet!
-	</div>
+	<!-- <div v-else-if="!loading && !products.length">
+		Sorry no products yet!
+	</div> -->
+	<LoadingOverlay v-else />
 </template>
 
 <script>
-import { computed, onMounted } from "vue";
+import { computed, onMounted } from "@vue/composition-api";
 import Product from "./product/Product";
+import LoadingOverlay from "../shared-components/LoadingOverlay";
+
 export default {
 	components: {
 		Product,
+		LoadingOverlay,
 	},
-	setup(props, context) {
+	setup(props, { root }) {
 		onMounted(() => {
-			context.$store.dispatch["GET_PRODUCTS"];
+			root.$store.dispatch("GET_PRODUCTS");
 		});
 
 		return {
 			products: computed(() => {
-				return context.$store.getters["GET_PRODUCTS"];
+				return root.$store.getters["GET_PRODUCTS"];
 			}),
 			loading: computed(() => {
-				return context.$store.getters["LOADING"];
+				return root.$store.getters["LOADING"];
 			}),
 		};
 	},
@@ -34,5 +38,6 @@ export default {
 <style scoped lang="scss">
 .products-catalog {
 	display: flex;
+	flex-wrap: wrap;
 }
 </style>
