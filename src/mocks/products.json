@@ -1,0 +1,40 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"title": "Mouse gaming",
+			"price": "120",
+			"description": "Some good gaming mouse"
+		},
+		{
+			"id": 2,
+			"title": "Tastatura",
+			"price": "120",
+			"description": "Some good gaming mouse"
+		},
+		{
+			"id": 3,
+			"title": "Laptop",
+			"price": "120",
+			"description": "Some good gaming mouse"
+		},
+		{
+			"id": 4,
+			"title": "Monitor",
+			"price": "120",
+			"description": "Some good gaming mouse"
+		},
+		{
+			"id": 5,
+			"title": "Tastatura 123",
+			"price": "120",
+			"description": "Some good gaming mouse"
+		},
+		{
+			"id": 6,
+			"title": "Altceva gaming",
+			"price": "120",
+			"description": "Some good gaming mouse"
+		}
+	]
+}
