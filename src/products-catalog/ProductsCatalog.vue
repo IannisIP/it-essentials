@@ -39,5 +39,7 @@ export default {
 .products-catalog {
 	display: flex;
 	flex-wrap: wrap;
+	width: 1200px;
+	margin: 0 auto;
 }
 </style>
