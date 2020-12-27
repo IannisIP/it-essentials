@@ -1,37 +1,31 @@
 <template>
-  <!-- <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div> -->
-  <div id="app">
-    <Header/>
-        <router-view></router-view>
-    <Footer />
-  </div>
+	<v-app id="app">
+		<Header />
+		<v-main id="content">
+			<router-view></router-view>
+		</v-main>
+		<Footer />
+	</v-app>
 </template>
 
 <script>
-import Header from './shared-components/Header'
-import Footer from './shared-components/Footer'
+import Header from "./shared-components/Header";
+import Footer from "./shared-components/Footer";
 
 export default {
-  components: {
-    Header,
-    Footer,
-  },
-}
-
+	components: {
+		Header,
+		Footer,
+	},
+};
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
 }
 </style>
