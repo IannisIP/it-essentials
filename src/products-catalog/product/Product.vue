@@ -1,10 +1,7 @@
 <template>
-	<v-card max-width="250" class="ma-2">
-		<v-img
-			height="250"
-			src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-		></v-img>
-		<v-card-title class="mx-auto">Cafe Badilico</v-card-title>
+	<v-card max-width="250" min-width="250" class="ma-2">
+		<v-img height="250" :src="product.image || DefaultImage"></v-img>
+		<v-card-title class="mx-auto">{{ product.title }}</v-card-title>
 
 		<div class="rating-wrapper">
 			<v-rating
@@ -17,8 +14,8 @@
 			></v-rating>
 			1 review
 		</div>
-		<v-card-subtitle>1300 LEI</v-card-subtitle>
-		<v-btn color="primary" class="ma-2">
+		<v-card-subtitle>{{ product.price }} LEI</v-card-subtitle>
+		<v-btn color="primary" class="ma-2" @click="handleBuy">
 			<v-icon>mdi-cart</v-icon>
 			Buy
 		</v-btn>
@@ -26,7 +23,28 @@
 </template>
 
 <script>
-export default {};
+import { computed } from "@vue/composition-api";
+import DefaultImage from "../../assets/logo.png";
+export default {
+	props: {
+		product: {
+			required: true,
+			type: Object,
+		},
+	},
+	setup(props, { root }) {
+		const reviews = computed(() => {});
+		const handleBuy = () => {
+			//add product to store shopping cart.
+			root.$store.dispatch("cart/SET_PRODUCT_TO_CART", props.product);
+		};
+		return {
+			reviews,
+			handleBuy,
+			DefaultImage,
+		};
+	},
+};
 </script>
 
 <style scoped lang="scss">

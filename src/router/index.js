@@ -16,7 +16,7 @@ const routes = [
 		component: ProductsFavorites,
 	},
 	{
-		path: "/order",
+		path: "/cart",
 		name: "ProductOrder",
 		component: ProductsOrder,
 	},
