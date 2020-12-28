@@ -34,7 +34,7 @@ export default {
 				return root.$store.getters["cart/GET_ORDER_NO_PRODUCTS"];
 			}),
 			openCart: () => {
-				router.push("/cart");
+				router.push("/cart/products");
 			},
 		};
 	},
