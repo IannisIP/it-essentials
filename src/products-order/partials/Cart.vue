@@ -24,12 +24,23 @@
 							<v-select
 								:items="selectMaxQuantity"
 								class="mr-2"
-								v-model="select"
+								:value="state.select"
+								@change="updateOrderQuantity($event)"
 							></v-select>
 							<span>buc</span>
 						</div>
 
 						<div class="line-price ma-4">{{ product.price }} lei</div>
+
+						<v-btn
+							color="primary"
+							class="remove-btn ma-2"
+							@click="handleRemove"
+							outlined
+						>
+							<v-icon>mdi-trash-can</v-icon>
+							Elimina
+						</v-btn>
 					</div>
 				</div>
 			</div>
@@ -39,6 +50,7 @@
 
 <script>
 import DefaultImage from "@/assets/logo.png";
+import { reactive } from "@vue/composition-api";
 
 export default {
 	props: {
@@ -47,11 +59,27 @@ export default {
 			type: Object,
 		},
 	},
-	setup(props) {
+	setup(props, { root }) {
+		const state = reactive({
+			select: props.product.quantity,
+		});
+		const updateOrderQuantity = (value) => {
+			state.select = value;
+			root.$store.dispatch("cart/UPDATE_ORDER_QUANTITY", {
+				...props.product,
+				quantity: value,
+			});
+		};
+
+		const handleRemove = () => {
+			root.$store.dispatch("cart/REMOVE_ORDER", props.product);
+		};
 		return {
 			DefaultImage,
-			select: props.product.quantity,
 			selectMaxQuantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+			updateOrderQuantity,
+			state,
+			handleRemove,
 		};
 	},
 };
@@ -141,6 +169,12 @@ export default {
 				float: left;
 			}
 		}
+	}
+
+	.remove-btn {
+		position: absolute;
+		bottom: 34px;
+		right: 45px;
 	}
 }
 </style>

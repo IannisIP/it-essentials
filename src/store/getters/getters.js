@@ -28,6 +28,9 @@ export const getters = {
 	},
 	TOTAL_CART: (state, getters) => {
 		const productsByOrder = getters["GET_PRODUCTS_BY_ORDER"];
-		return productsByOrder.reduce((acc, currVal) => acc + currVal.price, 0);
+		return productsByOrder.reduce(
+			(acc, currVal) => acc + currVal.price * currVal.quantity,
+			0
+		);
 	},
 };

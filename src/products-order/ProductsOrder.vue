@@ -38,6 +38,7 @@
 import Cart from "./partials/Cart";
 import router from "@/router";
 import { computed, reactive } from "@vue/composition-api";
+
 export default {
 	components: {
 		Cart,

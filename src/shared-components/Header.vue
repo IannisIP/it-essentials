@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<v-app-bar color="white">
-			<v-toolbar-title>IT Essentials</v-toolbar-title>
+			<v-toolbar-title id="toolbar-title" @click="goHome"
+				>IT Essentials</v-toolbar-title
+			>
 
 			<v-spacer></v-spacer>
 
@@ -33,6 +35,9 @@ export default {
 			openCart: () => {
 				router.push("/cart/products");
 			},
+			goHome: () => {
+				router.push("/");
+			},
 		};
 	},
 };
@@ -47,5 +52,9 @@ export default {
 	background-color: red;
 	top: -3px;
 	left: 20px;
+}
+
+#toolbar-title {
+	cursor: pointer;
 }
 </style>
