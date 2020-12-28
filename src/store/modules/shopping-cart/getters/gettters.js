@@ -12,6 +12,6 @@ export const getters = {
 		return state.metodaPlata;
 	},
 	GET_ORDER_NO_PRODUCTS(state) {
-		return state.order.length;
+		return state.order.reduce((acc, order) => acc + order.quantity, 0);
 	},
 };

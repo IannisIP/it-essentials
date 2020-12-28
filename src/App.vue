@@ -11,11 +11,19 @@
 <script>
 import Header from "./shared-components/Header";
 import Footer from "./shared-components/Footer";
+import { onMounted } from "@vue/composition-api";
 
 export default {
 	components: {
 		Header,
 		Footer,
+	},
+
+	setup(props, { root }) {
+		onMounted(() => {
+			root.$store.dispatch("GET_PRODUCTS");
+			root.$store.dispatch("cart/GET_ORDER");
+		});
 	},
 };
 </script>

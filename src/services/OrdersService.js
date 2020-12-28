@@ -7,7 +7,7 @@ const getOrder = async () => {
 
 		setTimeout(function() {
 			resolve(data.orders);
-		}, 5500);
+		}, 1500);
 	});
 	// const myJson = await response.json();
 	// console.log(myJson);

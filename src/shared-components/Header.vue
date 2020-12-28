@@ -22,13 +22,10 @@
 </template>
 
 <script>
-import { computed, onMounted } from "@vue/composition-api";
+import { computed } from "@vue/composition-api";
 import router from "@/router";
 export default {
 	setup(props, { root }) {
-		onMounted(() => {
-			root.$store.dispatch("cart/GET_ORDER");
-		});
 		return {
 			orderAmount: computed(() => {
 				return root.$store.getters["cart/GET_ORDER_NO_PRODUCTS"];

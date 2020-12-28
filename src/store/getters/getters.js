@@ -5,4 +5,29 @@ export const getters = {
 	LOADING: (state) => {
 		return state.loading;
 	},
+	GET_PRODUCTS_BY_ORDER: (state, getters) => {
+		const orders = getters["cart/GET_ORDER"];
+		const products = getters["GET_PRODUCTS"];
+
+		const filteredProducts = products.filter((product) =>
+			orders.some((order) => order.id === product.id)
+		);
+
+		orders.forEach((order) => {
+			filteredProducts.forEach((product, idx) => {
+				if (product.id === order.id) {
+					filteredProducts[idx] = {
+						...filteredProducts[idx],
+						quantity: order.quantity,
+					};
+				}
+			});
+		});
+
+		return filteredProducts;
+	},
+	TOTAL_CART: (state, getters) => {
+		const productsByOrder = getters["GET_PRODUCTS_BY_ORDER"];
+		return productsByOrder.reduce((acc, currVal) => acc + currVal.price, 0);
+	},
 };
