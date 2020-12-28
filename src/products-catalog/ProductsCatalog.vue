@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from "@vue/composition-api";
+import { computed } from "@vue/composition-api";
 import Product from "./product/Product";
 import LoadingOverlay from "../shared-components/LoadingOverlay";
 
@@ -19,10 +19,6 @@ export default {
 		LoadingOverlay,
 	},
 	setup(props, { root }) {
-		onMounted(() => {
-			root.$store.dispatch("GET_PRODUCTS");
-		});
-
 		return {
 			products: computed(() => {
 				return root.$store.getters["GET_PRODUCTS"];

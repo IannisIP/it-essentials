@@ -7,7 +7,7 @@ const getProducts = async () => {
 
 		setTimeout(function() {
 			resolve(data.products);
-		}, 5500);
+		}, 1500);
 	});
 	// const myJson = await response.json();
 	// console.log(myJson);

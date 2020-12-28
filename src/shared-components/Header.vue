@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<v-app-bar color="white">
-			<v-toolbar-title>IT Essentials</v-toolbar-title>
+			<v-toolbar-title id="toolbar-title" @click="goHome"
+				>IT Essentials</v-toolbar-title
+			>
 
 			<v-spacer></v-spacer>
 
@@ -22,19 +24,19 @@
 </template>
 
 <script>
-import { computed, onMounted } from "@vue/composition-api";
+import { computed } from "@vue/composition-api";
 import router from "@/router";
 export default {
 	setup(props, { root }) {
-		onMounted(() => {
-			root.$store.dispatch("cart/GET_ORDER");
-		});
 		return {
 			orderAmount: computed(() => {
 				return root.$store.getters["cart/GET_ORDER_NO_PRODUCTS"];
 			}),
 			openCart: () => {
-				router.push("/cart");
+				router.push("/cart/products");
+			},
+			goHome: () => {
+				router.push("/");
 			},
 		};
 	},
@@ -50,5 +52,9 @@ export default {
 	background-color: red;
 	top: -3px;
 	left: 20px;
+}
+
+#toolbar-title {
+	cursor: pointer;
 }
 </style>

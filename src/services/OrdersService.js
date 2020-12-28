@@ -7,7 +7,7 @@ const getOrder = async () => {
 
 		setTimeout(function() {
 			resolve(data.orders);
-		}, 5500);
+		}, 1500);
 	});
 	// const myJson = await response.json();
 	// console.log(myJson);
@@ -15,6 +15,21 @@ const getOrder = async () => {
 	return response;
 };
 
+const sendOrder = async (order) => {
+	const rawResponse = await fetch("https://httpbin.org/post", {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(order),
+	});
+	const content = await rawResponse.json();
+
+	console.log(content);
+};
+
 export default {
 	getOrder,
+	sendOrder,
 };
