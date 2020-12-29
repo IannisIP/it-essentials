@@ -25,6 +25,8 @@
 <script>
 import { computed } from "@vue/composition-api";
 import DefaultImage from "../../assets/logo.png";
+import OrdersService from "@/services/OrdersService.js";
+
 export default {
 	props: {
 		product: {
@@ -34,9 +36,14 @@ export default {
 	},
 	setup(props, { root }) {
 		const reviews = computed(() => {});
-		const handleBuy = () => {
+		const handleBuy = async () => {
 			//add product to store shopping cart.
 			root.$store.dispatch("cart/SET_PRODUCT_TO_CART", props.product);
+			const newCart = root.$store.getters["cart/GET_ORDER"];
+			await OrdersService.createOrUpdateCart({
+				userId: 9912,
+				products: newCart,
+			});
 		};
 		return {
 			reviews,

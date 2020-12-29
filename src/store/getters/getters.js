@@ -10,12 +10,12 @@ export const getters = {
 		const products = getters["GET_PRODUCTS"];
 
 		const filteredProducts = products.filter((product) =>
-			orders.some((order) => order.id === product.id)
+			orders.some((order) => order.productId === product.id)
 		);
 
 		orders.forEach((order) => {
 			filteredProducts.forEach((product, idx) => {
-				if (product.id === order.id) {
+				if (product.id === order.productId) {
 					filteredProducts[idx] = {
 						...filteredProducts[idx],
 						quantity: order.quantity,
