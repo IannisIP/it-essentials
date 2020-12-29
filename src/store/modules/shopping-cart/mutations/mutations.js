@@ -14,11 +14,11 @@ export const mutations = {
 		state.metodaPlata = metoda;
 	},
 	SET_PRODUCT_TO_CART(state, { id }) {
-		const existingProduct = state.order.find((order) => order.id === id);
+		const existingProduct = state.order.find((order) => order.productId === id);
 		if (existingProduct) {
 			existingProduct.quantity += 1;
 			const idx = state.order.findIndex(
-				(order) => order.id == existingProduct.id
+				(order) => order.productId == existingProduct.productId
 			);
 			state.order.splice(idx, 1, existingProduct);
 		} else {
