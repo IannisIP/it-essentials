@@ -51,6 +51,7 @@
 <script>
 import DefaultImage from "@/assets/logo.png";
 import { reactive } from "@vue/composition-api";
+import OrdersService from "@/services/OrdersService.js";
 
 export default {
 	props: {
@@ -63,16 +64,26 @@ export default {
 		const state = reactive({
 			select: props.product.quantity,
 		});
-		const updateOrderQuantity = (value) => {
+		const updateOrderQuantity = async (value) => {
 			state.select = value;
 			root.$store.dispatch("cart/UPDATE_ORDER_QUANTITY", {
 				...props.product,
 				quantity: value,
 			});
+
+			await OrdersService.updateProductQuantity({
+				quantity: value,
+				productId: props.product.id,
+			});
 		};
 
-		const handleRemove = () => {
+		const handleRemove = async () => {
 			root.$store.dispatch("cart/REMOVE_ORDER", props.product);
+
+			await OrdersService.removeCartProduct({
+				userId: 9912,
+				productId: props.product.id,
+			});
 		};
 		return {
 			DefaultImage,

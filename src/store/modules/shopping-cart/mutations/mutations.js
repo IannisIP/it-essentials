@@ -22,15 +22,18 @@ export const mutations = {
 			);
 			state.order.splice(idx, 1, existingProduct);
 		} else {
-			state.order.push({ id, quantity: 1 });
+			state.order.push({ productId: id, quantity: 1 });
 		}
 	},
 	UPDATE_ORDER_QUANTITY(state, product) {
-		const idx = state.order.findIndex((order) => order.id == product.id);
-		state.order.splice(idx, 1, { id: product.id, quantity: product.quantity });
+		const idx = state.order.findIndex((order) => order.productId == product.id);
+		state.order.splice(idx, 1, {
+			productId: product.id,
+			quantity: product.quantity,
+		});
 	},
 	REMOVE_ORDER(state, product) {
-		state.order = state.order.filter((order) => order.id !== product.id);
+		state.order = state.order.filter((order) => order.productId !== product.id);
 
 		if (state.order.length === 0) {
 			router.push("/");

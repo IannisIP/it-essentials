@@ -37,7 +37,7 @@
 <script>
 import Cart from "./partials/Cart";
 import router from "@/router";
-import { computed, reactive } from "@vue/composition-api";
+import { computed, onBeforeMount, reactive } from "@vue/composition-api";
 
 export default {
 	components: {
@@ -55,6 +55,11 @@ export default {
 		const totalCart = computed(() => {
 			return root.$store.getters["TOTAL_CART"] + state.pretLivrare;
 		});
+
+		onBeforeMount(() => {
+			root.$store.dispatch("cart/GET_ORDER");
+		});
+
 		return {
 			openCheckout: () => {
 				router.push("/cart/checkout");
