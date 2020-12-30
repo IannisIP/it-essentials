@@ -1,7 +1,9 @@
 //import mockOrders from "../mocks/orders.json";
 
 const getOrder = async () => {
-	const response = await fetch(`http://localhost:3001/carts/${9912}`);
+	const response = await fetch(
+		`https://it-essentials-basic-backend.herokuapp.com/carts/${9912}`
+	);
 	// const response = new Promise((resolve) => {
 	// 	const data = mockOrders;
 
@@ -29,7 +31,7 @@ const sendOrder = async (order) => {
 };
 
 const createOrUpdateCart = async (newCart) => {
-	await fetch(`http://localhost:3001/carts`, {
+	await fetch(`https://it-essentials-basic-backend.herokuapp.com/carts`, {
 		method: "POST",
 		headers: {
 			Accept: "application/json",
@@ -40,7 +42,7 @@ const createOrUpdateCart = async (newCart) => {
 };
 
 const updateProductQuantity = async (updatedProduct) => {
-	await fetch(`http://localhost:3001/carts`, {
+	await fetch(`https://it-essentials-basic-backend.herokuapp.com/carts`, {
 		method: "PUT",
 		headers: {
 			Accept: "application/json",
@@ -54,7 +56,7 @@ const updateProductQuantity = async (updatedProduct) => {
 };
 
 const removeCartProduct = async (data) => {
-	await fetch(`http://localhost:3001/carts`, {
+	await fetch(`https://it-essentials-basic-backend.herokuapp.com/carts`, {
 		method: "DELETE",
 		headers: {
 			Accept: "application/json",

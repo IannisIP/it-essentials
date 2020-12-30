@@ -1,7 +1,9 @@
 //import mockProducts from "../mocks/products.json";
 
 const getProducts = async () => {
-	const response = await fetch("http://localhost:3001/products");
+	const response = await fetch(
+		"https://it-essentials-basic-backend.herokuapp.com/products"
+	);
 	// const response = new Promise((resolve) => {
 	// 	const data = mockProducts;
 
