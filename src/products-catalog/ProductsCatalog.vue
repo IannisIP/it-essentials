@@ -35,7 +35,6 @@ export default {
 .products-catalog {
 	display: flex;
 	flex-wrap: wrap;
-	width: 1064px;
-	margin: 0 auto;
+	justify-content: center;
 }
 </style>

@@ -88,13 +88,24 @@ export default {
 	justify-content: center;
 }
 
+@media screen and (max-width: 500px) {
+	.orders-wrapper {
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.total-summary-container {
+		width: auto !important;
+	}
+}
+
 .total-summary-container {
 	width: 400px;
 }
 
 #my-cart-title {
-	position: relative;
-	left: 150px;
-	padding-bottom: 4px;
+	text-align: center;
+	margin: 4px;
 }
 </style>

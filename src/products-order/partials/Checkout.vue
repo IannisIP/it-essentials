@@ -123,14 +123,25 @@ export default {
 	justify-content: center;
 }
 
+@media screen and (max-width: 500px) {
+	.orders-wrapper {
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.total-summary-container {
+		width: auto !important;
+	}
+}
+
 .total-summary-container {
 	width: 400px;
 }
 
 #my-cart-title {
-	position: relative;
-	left: 150px;
-	padding-bottom: 4px;
+	text-align: center;
+	margin: 4px;
 }
 
 .cart-vendor-container {
@@ -141,6 +152,7 @@ export default {
 	margin: 0 0 20px;
 	border-radius: 3px;
 	width: 800px;
+
 	.cart-vendor-title {
 		font-size: 20px;
 		text-indent: 10px;
@@ -148,6 +160,10 @@ export default {
 		font-weight: normal;
 	}
 
+	.product-container {
+		display: flex;
+		flex-direction: row;
+	}
 	.cart-widget {
 		box-shadow: 1px 1px 2px #bbc6cc;
 		padding: 30px 25px 20px 25px;
@@ -163,8 +179,9 @@ export default {
 		}
 
 		.product-summary {
-			// width: 665px;
-			float: right !important;
+			display: flex;
+			flex-wrap: wrap;
+			flex: 1;
 
 			.main-product-title {
 				font-size: 14px;
@@ -174,14 +191,12 @@ export default {
 				font-weight: 700;
 
 				float: left;
-
-				width: 300px;
 			}
 
 			//  border: 1px solid #bbb;
 			::v-deep.v-select__slot {
 				border-radius: 4px;
-				border: 1px solid #bbb;
+				border: 1px solid rgb(151, 124, 124);
 			}
 			::v-deep.v-text-field.v-input--is-focused
 				> .v-input__control
@@ -207,15 +222,22 @@ export default {
 				}
 			}
 
-			.select-container,
 			.title-container {
-				float: left;
+				flex-basis: 402px;
+			}
+			.remove-btn-wrapper {
+				display: flex;
+				margin-left: auto;
 			}
 			.line-price {
-				text-align: right;
-				float: left;
+				flex-basis: 72px;
 			}
 		}
+	}
+}
+@media screen and (max-width: 1024px) {
+	.cart-vendor-container {
+		width: auto !important;
 	}
 }
 </style>
